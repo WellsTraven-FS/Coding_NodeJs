@@ -7,3 +7,7 @@ Hello Mr. Eric! Pleasure to participate in your class!
 # Date 10/4/2022
 
 1.5 NodeJS Coding Assignment completed
+
+#### Test
+
+String module completed
