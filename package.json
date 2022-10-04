@@ -1,0 +1,23 @@
+{
+  "name": "coding_nodejs",
+  "version": "1.0.0",
+  "description": "NodeJS Coding",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WellsTraven-FS/Coding_NodeJs.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "Assignment"
+  ],
+  "author": "Traven Wells",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WellsTraven-FS/Coding_NodeJs/issues"
+  },
+  "homepage": "https://github.com/WellsTraven-FS/Coding_NodeJs#readme"
+}
