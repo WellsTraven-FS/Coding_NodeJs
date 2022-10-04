@@ -7,23 +7,9 @@ const app = express();
 app.use(express.json());
 
 // default service call (actuator)
-// app.get("/", (req, res, next) => {
-//     res.setMaxListeners(200).json({
-//         message: "Service is up",
-//     });
-// });
-
-// 'GET' - Localhost:3000
 app.get("/", (req, res, next) => {
     res.setMaxListeners(200).json({
-        message: "Service for 'GET' is up",
-    });
-});
-
-// 'POST' - Localhost:3000
-app.post("/", (req, res, next) => {
-    res.setMaxListeners(200).json({
-        message: "Service for 'POST' is up",
+        message: "Service is up",
     });
 });
 

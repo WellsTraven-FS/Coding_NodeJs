@@ -11,6 +11,15 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+    res.status(200).json({
+        message: "POST - SUCESS",
+        metadata: {
+            hostname: req.hostname,
+            method: req.method,
+        },
+    });
+});
 // 'GET by ID' - Localhost:3000/example/45
 router.get("/:id", (req, res) => {
     const id = req.params.id;
