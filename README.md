@@ -11,3 +11,5 @@ Hello Mr. Eric! Pleasure to participate in your class!
 #### Test
 
 String module completed
+
+1.7 NodeJS Testing Assignment completed
