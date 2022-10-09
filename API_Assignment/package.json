@@ -1,0 +1,15 @@
+{
+  "name": "api_assignment",
+  "version": "1.0.0",
+  "description": "Backend Service API Coding",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "keywords": [
+    "API",
+    "Assignment"
+  ],
+  "author": "Traven Wells",
+  "license": "MIT"
+}
