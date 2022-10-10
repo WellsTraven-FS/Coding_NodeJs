@@ -3,10 +3,11 @@ const apiRouter = express.Router();
 
 const {
     getRandomUser,
-    getRandomUserById,
+    getRandomById,
+    // getRandomByName,
 } = require("../services/randomJokesService");
 
-apiRouter.get("/user", (req, res, next) => {
+apiRouter.get("/", (req, res, next) => {
     getRandomUser()
         .then((result) => {
             console.log(result);
@@ -23,7 +24,7 @@ apiRouter.get("/user", (req, res, next) => {
 });
 
 apiRouter.get("/:id", (req, res, next) => {
-    getRandomUserById(req.params.id)
+    getRandomById(req.params.id)
         .then((result) => {
             res.status(200).json(result.data);
         })
@@ -35,5 +36,19 @@ apiRouter.get("/:id", (req, res, next) => {
             });
         });
 });
+
+// apiRouter.get("/:name", (req, res, next) => {
+//     getRandomByName(req.params.name)
+//         .then((result) => {
+//             res.status(200).json(result.data);
+//         })
+//         .catch((error) => {
+//             res.status(500).json({
+//                 error: {
+//                     message: error.message,
+//                 },
+//             });
+//         });
+// });
 
 module.exports = apiRouter;

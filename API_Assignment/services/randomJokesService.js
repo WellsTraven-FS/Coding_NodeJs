@@ -1,14 +1,19 @@
-const axios = require("axios").default;
+const axios = require("axios");
 require("dotenv").config();
 
 const getRandomUser = async () => {
-    console.log("The Real User");
+    console.log("The Real Random");
     return await axios.get(`${process.env.URL}`);
 };
 
-const getRandomUserById = async (id) => {
-    console.log("The Real User");
+// const getRandomByName = async (name) => {
+//     console.log("The Real Random");
+//     return await axios.get(`${process.env.URL} ${name}`);
+// };
+
+const getRandomById = async (id) => {
+    console.log("The Real Random");
     return await axios.get(`${process.env.URL} ${id}`);
 };
 
-module.exports = { getRandomUser, getRandomUserById };
+module.exports = { getRandomUser, getRandomById };
