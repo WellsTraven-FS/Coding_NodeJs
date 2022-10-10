@@ -1,5 +1,5 @@
 const { getRandomApi, getRandomById } = require("./randomService");
-jest.mock("./randomService");
+// jest.mock("./randomService");
 
 describe("Random Service Test", () => {
     test("As user I should return randoms", async () => {
