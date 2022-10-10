@@ -2,12 +2,12 @@ const axios = require("axios");
 require("dotenv").config();
 
 const getRandomApi = async () => {
-    console.log("Mock Random");
+    console.log("The Real Random");
     return await axios.get(`${process.env.URL}`);
 };
 
 const getRandomById = async (id) => {
-    console.log("Mock Random by Id");
+    console.log("The Real Random");
     return await axios.get(`${process.env.URL} ${id}`);
 };
 
