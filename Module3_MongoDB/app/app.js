@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+const mongoose = require("mongoose");
 const trainerRoutes = require("../api/routes/trainer");
 const traineeRoutes = require("../api/routes/trainee");
 
@@ -56,4 +57,12 @@ app.use((error, req, res, next) => {
     });
 });
 
+// connect to mongodb
+mongoose.connect(process.env.mongoDBURL, (err) => {
+    if (err) {
+        console.error("Error: ", err.message);
+    } else {
+        console.log("MongoDB connection successful");
+    }
+});
 module.exports = app;
