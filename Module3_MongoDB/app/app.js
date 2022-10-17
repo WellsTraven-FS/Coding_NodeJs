@@ -1,9 +1,17 @@
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+
+// MongoDB connection
 const mongoose = require("mongoose");
-const trainerRoutes = require("../api/routes/trainer");
-const traineeRoutes = require("../api/routes/trainee");
+main().catch((err) => console.log(err));
+async function main() {
+    await mongoose.connect("mongodb://localhost:27017/health");
+    console.log("Mongodb connection successful");
+}
+
+const trainerRoutes = require("../api/routes/trainers");
+const traineeRoutes = require("../api/routes/trainees");
 
 // middleware for logging
 app.use(morgan("dev"));
@@ -58,11 +66,11 @@ app.use((error, req, res, next) => {
 });
 
 // connect to mongodb
-mongoose.connect(process.env.mongoDBURL, (err) => {
-    if (err) {
-        console.error("Error: ", err.message);
-    } else {
-        console.log("MongoDB connection successful");
-    }
-});
+// mongoose.connect(process.env.mongoDBURL, (err) => {
+//     if (err) {
+//         console.error("Error: ", err.message);
+//     } else {
+//         console.log("MongoDB connection Successful");
+//     }
+// });
 module.exports = app;
