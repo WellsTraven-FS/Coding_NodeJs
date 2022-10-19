@@ -14,7 +14,7 @@ router.get("/", (req, res, next) => {
         .then((result) => {
             console.log(result);
             res.status(200).json({
-                message: "Trainer has been saved",
+                message: "Trainer Added",
                 trainer: {
                     title: result.title,
                     author: result.author,

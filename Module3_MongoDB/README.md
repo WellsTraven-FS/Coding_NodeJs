@@ -2,4 +2,4 @@
 
 ### 3.6 NodeJS MongoDB Assignment
 
-Project created
+3.6 Project created and completed
