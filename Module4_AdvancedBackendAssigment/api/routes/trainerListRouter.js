@@ -3,6 +3,7 @@ const express = require("express");
 const TrainerList = require("../model/trainerList");
 const { findTrainer, addTrainer } = require("../../db/db");
 const router = express.Router();
+const Messages = require("../../messages/messages");
 
 const Trainer = require("../model/trainerList");
 
@@ -69,7 +70,12 @@ router.get("/:trainerListId", (req, res, next) => {
         .populate("specialty YOE")
         .exec()
         .then((trainer) => {
-            console.log(trainer);
+            if (!trainer) {
+                console.log(trainer);
+                return res.status(404).json({
+                    message: Messages.trainer_not_found,
+                });
+            }
             res.status(201).json({
                 trainer: trainer,
             });
@@ -111,7 +117,7 @@ router.delete("/trainerListId", (req, res, next) => {
         .exec()
         .then((result) => {
             res.status(200).json({
-                messsage: "Trainer Deleted",
+                messsage: Messages.trainer_deleted,
                 request: {
                     method: "GET",
                     url: "http://localhost:6000/trainerList" + trainerListId,
