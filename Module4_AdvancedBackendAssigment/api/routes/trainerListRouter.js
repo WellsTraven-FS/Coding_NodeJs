@@ -62,6 +62,61 @@ router.post("/", (req, res) => {
         });
     //
 });
+router.get("/", (req, res) => {
+    // find trainer
+    findTrainer({
+        name: req.body.name,
+        specialty: req.body.specialty,
+        YOE: req.body.YOE,
+    })
+        .then((trainer) => {
+            console.log(trainer);
+
+            // if found return message trainer list
+            if (trainer.length > 0) {
+                res.status(406).json({
+                    message: `${result[0].trainer} trainer cataloged`,
+                    trainer: {
+                        name: trainer.name,
+                        specialty: trainer.specialty,
+                        YOE: trainer.YOE,
+                    },
+                });
+            } else {
+                const newTrainer = new Trainer({
+                    _id: mongoose.Types.ObjectId(),
+                    name: req.body.name,
+                    specialty: req.body.specialty,
+                    YOE: req.body.YOE,
+                });
+                addTrainer(newTrainer)
+                    .then((trainer) => {
+                        console.log(trainer);
+                        res.status(201).json({
+                            message: "Trainer Saved",
+                            trainer: {
+                                name: trainer.name,
+                                specialty: trainer.specialty,
+                                YOE: trainer.YOE,
+                            },
+                        });
+                    })
+                    .catch((error) => {
+                        res.status(error.status || 500).json({
+                            error: {
+                                message: error.message,
+                            },
+                        });
+                    });
+            }
+        })
+        .catch((error) => {
+            res.status(501).json({
+                message: error.message,
+            });
+        });
+    //
+});
 
 router.get("/:trainerListId", (req, res, next) => {
     const trainerListId = req.params.trainerListId;
