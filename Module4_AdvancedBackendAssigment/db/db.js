@@ -25,4 +25,4 @@ const disconnect = () => {
     mongoose.connection.close();
 };
 
-module.exports = { connect, addTrainer, findTrainer, disconnect };
+module.exports = { connect, findTrainer, addTrainer, disconnect };

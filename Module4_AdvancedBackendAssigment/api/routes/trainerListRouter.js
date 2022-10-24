@@ -1,8 +1,10 @@
-const express = require("express");
 const mongoose = require("mongoose");
-const router = express.Router();
+const express = require("express");
+const TrainerList = require("../model/trainerList");
 const { findTrainer, addTrainer } = require("../../db/db");
-const Trainer = require("../model/trainer");
+const router = express.Router();
+
+const Trainer = require("../model/trainerList");
 
 router.post("/", (req, res) => {
     // find trainer
@@ -60,13 +62,11 @@ router.post("/", (req, res) => {
     //
 });
 
-router.get("/:trainerId", (req, res, next) => {
-    const trainerId = req.params.trainerId;
-    Trainer.findById(trainerId)
-        .select("_id")
-        .select("name")
-        .select("specialty")
-        .select("YOE")
+router.get("/:trainerListId", (req, res, next) => {
+    const trainerListId = req.params.trainerListId;
+    TrainerList.findById(trainerListId)
+        .select("_id name")
+        .populate("specialty YOE")
         .exec()
         .then((trainer) => {
             console.log(trainer);
@@ -82,13 +82,11 @@ router.get("/:trainerId", (req, res, next) => {
             });
         });
 });
-router.patch("/:trainerId", (req, res, next) => {
-    const trainerId = req.params.trainerId;
-    Trainer.findById(trainerId)
-        .select("_id")
-        .select("name")
-        .select("specialty")
-        .select("YOE")
+router.patch("/:trainerListId", (req, res, next) => {
+    const trainerListId = req.params.trainerListId;
+    TrainerList.findById(trainerListId)
+        .select("_id name ")
+        .populate("specialty YOE")
         .exec()
         .then((trainer) => {
             console.log(trainer);
@@ -104,19 +102,19 @@ router.patch("/:trainerId", (req, res, next) => {
             });
         });
 });
-router.delete("/trainerId", (req, res, next) => {
-    const trainerId = req.params.trainerId;
+router.delete("/trainerListId", (req, res, next) => {
+    const trainerListId = req.params.trainerListId;
 
-    Trainer.deleteOne({
-        _id: trainerId,
+    TrainerList.deleteOne({
+        _id: trainerListId,
     })
         .exec()
         .then((result) => {
             res.status(200).json({
-                message: "Trainer Deleted",
+                messsage: "Trainer Deleted",
                 request: {
                     method: "GET",
-                    url: "http://localhost:6000/trainer" + trainerId,
+                    url: "http://localhost:6000/trainerList" + trainerListId,
                 },
             });
         })

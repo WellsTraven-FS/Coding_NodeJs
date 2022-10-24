@@ -10,7 +10,7 @@ const addTrainer = async (newTrainer) => {
     return Promise.resolve({
         name: "Alex Ruffner",
         specialty: "Functional strength training",
-        YOE: "10",
+        YOE: 10,
     });
 };
 
@@ -21,7 +21,7 @@ const findTrainer = async (object) => {
         {
             name: "Alex Ruffner",
             specialty: "Functional strength training",
-            YOE: "10",
+            YOE: 10,
         },
     ]);
 };

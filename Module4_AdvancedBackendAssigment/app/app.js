@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const trainerRouter = require("../api/routes/trainerRoute");
+const trainerListRouter = require("../api/routes/trainerListRouter");
 
 // parsing
 app.use(express.urlencoded({ extended: true }));
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 
 // use middleware for router
 app.use("/trainer", trainerRouter);
+app.use("/trainerList", trainerListRouter);
 
 // use middleware to handle errpr
 app.use((req, res, next) => {
